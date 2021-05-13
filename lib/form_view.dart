@@ -8,6 +8,7 @@ class FormView extends StatefulWidget {
 class _FormViewState extends State<FormView> {
   final _formKey = GlobalKey<FormState>();
   String name = "";
+  String lastName = "";
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +47,9 @@ class _FormViewState extends State<FormView> {
                       return null;
                     },
                     decoration: InputDecoration(hintText: "Sobrenome"),
+                    onChanged: (text) {
+                      lastName = text;
+                    },
                   ),
                   ElevatedButton(
                     onPressed: () {
@@ -55,7 +59,7 @@ class _FormViewState extends State<FormView> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                title: Text(name),
+                                title: Text("Olá ${name} ${lastName}"),
                               );
                             });
                       }
